@@ -6,7 +6,7 @@
   <title>TaskMaster360</title>
   <link rel="stylesheet" href="style.css">
   <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' rel='stylesheet' />
-  
+  <link rel="icon" type="image/png" sizes="16x16"  href="img/logo taskmaster 360.png">
   <script>
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -24,7 +24,7 @@
     <nav class="navbar">
       <div class="container">
         <div class="logo">
-          <img src="logo.png" alt="TaskMaster360 Logo">
+          <img src="img/logo taskmaster 360 inicio.png" alt="TaskMaster360 Logo">
           <span class="company-name">TaskMaster360</span>
         </div>
         <ul class="nav-links">
@@ -55,7 +55,16 @@
           <div id="calendar"></div>
         </div>
 
-
+       <!-- formulário de entrada de texto -->
+<div id="lembrete-form" style="display: none;">
+    <form id="lembrete-form-inner">
+      <label for="lembrete-input">Digite o lembrete:</label>
+      <input type="text" id="lembrete-input" required>
+      <button type="submit">Adicionar</button>
+    </form>
+  </div>
+  
+        <!-- Anotações -->
         <div id="anotacoes">
             <h2>Anotações</h2>
             <div class="anotacoes-container">
