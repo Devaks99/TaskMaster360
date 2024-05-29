@@ -1,63 +1,80 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaskMaster 360</title>
-    <link rel="stylesheet" href="style.css">
-    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' rel='stylesheet' />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskMaster360</title>
+  <link rel="stylesheet" href="style.css">
+  <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' rel='stylesheet' />
+  
+  <script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendar');
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth'
+      });
+      calendar.render();
+    });
+
+  </script>
 </head>
 <body>
-    <nav>
-        <div class="logo">TaskMaster 360</div>
-        <ul>
-            <li><a href="#tasks">Tarefas</a></li>
-            <li><a href="#calendar">Calendário</a></li>
-            <li id="logout" style="display:none;"><a href="#" onclick="logout()">Sair</a></li>
+  <header>
+    <nav class="navbar">
+      <div class="container">
+        <div class="logo">
+          <img src="logo.png" alt="TaskMaster360 Logo">
+          <span class="company-name">TaskMaster360</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#calendario">Calendário</a></li>
+          <li><a href="#anotacoes">Anotações</a></li>
         </ul>
+      </div>
     </nav>
-    
-    <div id="auth-section">
-        <h1 id="auth-title">Login</h1>
-        <form id="auth-form">
-            <input type="text" id="username" placeholder="Usuário" required>
-            <input type="password" id="password" placeholder="Senha" required>
-            <button type="submit" class="entrar">Entrar</button>
-            <p id="toggle-auth">Não tem uma conta? <a href="#" class="registro" onclick="toggleAuth()">Registre-se</a></p>
-        </form>
+  </header>
+
+  <main>
+    <section id="inicio">
+      <div class="container">
+        <!-- Lista de Tarefas -->
+        <div id="task-list">
+          <h2>Lista de Tarefas</h2>
+          <form id="task-form">
+            <input type="text" id="task-input" placeholder="Adicionar nova tarefa">
+            <button type="submit">Adicionar</button>
+          </form>
+          <ul id="tasks"></ul>
+        </div>
+
+        <!-- Calendário -->
+        <div id="calendario" class="container">
+          <h2>Calendário</h2>
+          <div id="calendar"></div>
+        </div>
+
+
+        <div id="anotacoes">
+            <h2>Anotações</h2>
+            <div class="anotacoes-container">
+              <textarea id="anotacoes-textarea" placeholder="Faça suas anotações aqui..."></textarea>
+            </div>
+          </div>
+          
+    </section>
+  </main>
+
+
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 TaskMaster360. Todos os direitos reservados.</p>
     </div>
-    
-    <main id="main-content" style="display:none;">
-        <section id="tasks">
-            <h1>Projetos e Tarefas</h1>
-            <div class="task-input">
-                <input type="text" id="new-project" placeholder="Novo Projeto">
-                <button class="button" id="add-project">Adicionar</button>
-            </div>
-            <div class="task-lists">
-                <div class="task-list" id="todo-list">
-                    <h2>A Fazer</h2>
-                    <ul id="todo-items"></ul>
-                </div>
-                <div class="task-list" id="completed-list">
-                    <h2>Concluídos</h2>
-                    <ul id="completed-items"></ul>
-                </div>
-            </div>
-        </section>
-        
-        <section id="calendar">
-            <h1>Calendário</h1>
-            <div id="calendar-container"></div>
-        </section>
-    </main>
+  </footer>
 
-    <footer>
-        <p>&copy; 2024 TaskMaster 360. Todos os direitos reservados.</p>
-    </footer>
-
-
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js'></script>
-    <script src="script.js"></script>
+  <script src="script.js"></script>
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.13/index.global.min.js'></script>
 </body>
 </html>
