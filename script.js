@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Carregar lembretes do armazenamento local quando a página é carregada
     const savedLembretes = JSON.parse(localStorage.getItem("lembretes")) || {};
     const calendar = new FullCalendar.Calendar(calendarEl, {
+        locale: 'pt-br',
         initialView: 'dayGridMonth',
         dateClick: function(info) {
             const dataStr = info.dateStr;
@@ -65,6 +66,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <input type="checkbox" class="status-checkbox"> Concluída
         `;
         taskList.appendChild(taskItem);
+        saveTasks();
 
         // Adicionar evento de clique para editar e excluir tarefa
         const editBtn = taskItem.querySelector(".edit-btn");
@@ -90,12 +92,14 @@ document.addEventListener("DOMContentLoaded", function() {
         const newText = prompt("Editar tarefa:", taskText);
         if (newText !== null && newText.trim() !== "") {
             taskItem.querySelector("span").textContent = newText;
+            saveTasks();     
         }
     }
 
     // Função para excluir tarefa
     function deleteTask(taskItem) {
         taskItem.remove();
+        saveTasks();
     }
 
     // Função para marcar tarefa como concluída ou em andamento
@@ -107,6 +111,7 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
             taskItem.classList.remove("completed");
         }
+        saveTasks();
     }
 
     // Função para salvar as anotações no armazenamento local
@@ -114,3 +119,23 @@ document.addEventListener("DOMContentLoaded", function() {
         localStorage.setItem("anotacoes", anotacoes);
     }
 });
+
+// Botão de scroll top
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+    });
+  }
+  
+  window.addEventListener('scroll', function () {
+    var scrollTopButton = document.querySelector('.scroll-top');
+    if (this.window.pageYOffset > 200) {
+        scrollTopButton.style.display = 'block';
+    } else {
+        scrollTopButton.style.display = 'none';
+    }
+  });
+  // Fim do Botão de scroll top
+  
+
+  
